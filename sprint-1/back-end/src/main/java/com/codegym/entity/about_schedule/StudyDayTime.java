@@ -19,9 +19,6 @@ public class StudyDayTime {
     private String studyDayTimeStudyTime;
     private String studyDayTimeStudyDay;
 
-    @ManyToMany(mappedBy = "studyDayTimes")
-    private Set<ScheduleDetail> scheduleDetail;
-
     @OneToMany(mappedBy = "studyDayTime")
     private Set<ScheduleDetail> scheduleDetails;
 }

@@ -20,9 +20,6 @@ public class Subject {
     private Integer subjectId;
     private String subjectName;
 
-    @ManyToMany(mappedBy = "subjects")
-    private Set<ScheduleDetail> scheduleDetail;
-
     @OneToMany(mappedBy = "subject")
     private Set<Mark> marks;
 
