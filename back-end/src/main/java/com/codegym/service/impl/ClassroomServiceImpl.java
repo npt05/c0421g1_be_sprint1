@@ -15,7 +15,7 @@ public class ClassroomServiceImpl implements IClassroomService {
 
     @Override
     public List<Classroom> findAll() {
-        return null;
+        return this.classroomRepository.findAll();
     }
 
     @Override

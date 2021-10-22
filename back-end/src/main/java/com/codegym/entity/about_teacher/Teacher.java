@@ -44,6 +44,7 @@ public class Teacher {
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
 
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;
