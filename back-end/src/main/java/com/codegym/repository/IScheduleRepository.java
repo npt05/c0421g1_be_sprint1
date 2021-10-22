@@ -13,6 +13,7 @@ import java.util.List;
 @Transactional
 public interface IScheduleRepository extends JpaRepository<Schedule, Integer> {
 
+    // Tai_NP coding day 22/10/2021
     @Query(value = "select sd.schedule_detail_id, sd.study_day_time_id," +
             " sd.subject_id,  sd.schedule_id  from schedule_detail sd" +
             " join schedule s on sd.schedule_id = s.schedule_id" +

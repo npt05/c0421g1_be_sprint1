@@ -15,11 +15,8 @@ public class ScheduleController {
     @Autowired
     private IScheduleService scheduleService;
 
-    @GetMapping("")
-    public ResponseEntity<Void> showScheduleTail() {
-        return new ResponseEntity<>( HttpStatus.OK);
-    }
 
+    // Tai_NP coding day 22/10/2021
     @GetMapping("/schedule-detail/{classId}")
     public ResponseEntity<List<ScheduleDetail>> showScheduleTail(@PathVariable String classId){
         Integer id = Integer.parseInt(classId);

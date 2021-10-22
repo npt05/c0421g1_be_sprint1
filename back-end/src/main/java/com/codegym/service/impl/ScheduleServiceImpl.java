@@ -13,6 +13,7 @@ public class ScheduleServiceImpl implements IScheduleService {
     @Autowired
     private IScheduleRepository scheduleRepository;
 
+    // Tai_NP coding day 22/10/2021
     @Override
     public List<ScheduleDetail> findScheduleDetailByClassId(Integer id) {
         return scheduleRepository.findScheduleDetailByClassId(id);
