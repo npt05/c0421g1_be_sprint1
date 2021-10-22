@@ -1,5 +1,6 @@
 package com.codegym.service.impl;
 
+import com.codegym.entity.about_schedule.ScheduleDetail;
 import com.codegym.entity.about_teacher.Teacher;
 import com.codegym.repository.ITeacherRepository;
 import com.codegym.service.ITeacherService;
@@ -36,5 +37,15 @@ public class TeacherServiceImpl implements ITeacherService {
     @Override
     public List<Teacher> search(String search) {
         return null;
+    }
+
+
+
+
+
+
+    @Override
+    public List<ScheduleDetail> getScheduleTeacher(Integer id) {
+        return teacherRepository.getScheduleTeacher(id);
     }
 }
