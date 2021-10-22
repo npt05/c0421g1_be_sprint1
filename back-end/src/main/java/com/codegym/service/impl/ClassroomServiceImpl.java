@@ -37,4 +37,10 @@ public class ClassroomServiceImpl implements IClassroomService {
     public List<Classroom> search(String search) {
         return null;
     }
+
+    //search method search Classroom exists
+    @Override
+    public List<Classroom> findAllClassroomExist() {
+        return this.classroomRepository.findAllClassroomExist();
+    }
 }

@@ -1,5 +1,6 @@
 package com.codegym.entity.about_classroom;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,8 @@ public class Grade {
     private Integer gradeId;
     private String gradeName;
 
+
     @OneToMany(mappedBy = "grade")
+    @JsonBackReference
     private Set<Classroom> classrooms;
 }
