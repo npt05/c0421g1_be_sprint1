@@ -31,4 +31,5 @@ public class Account {
 
     @OneToOne(mappedBy = "account")
     private Teacher teacher;
+
 }

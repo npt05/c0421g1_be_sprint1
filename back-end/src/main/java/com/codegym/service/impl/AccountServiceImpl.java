@@ -15,17 +15,22 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public List<Account> findAll() {
-        return null;
+        return accountRepository.findAll();
     }
 
     @Override
     public Account getById(Integer id) {
-        return null;
+        return this.accountRepository.getById(id);
+    }
+
+    @Override
+    public void saveAccount(String accountUsername, String accountPassword) {
+
     }
 
     @Override
     public Account save(Account account) {
-        return null;
+        return this.accountRepository.save(account);
     }
 
     @Override
