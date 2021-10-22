@@ -3,6 +3,7 @@ package com.codegym.entity.about_teacher;
 import com.codegym.entity.about_account.Account;
 import com.codegym.entity.about_classroom.Classroom;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +43,7 @@ public class Teacher {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
+    @JsonManagedReference
     private Account account;
 
     @OneToOne(cascade = CascadeType.ALL)
