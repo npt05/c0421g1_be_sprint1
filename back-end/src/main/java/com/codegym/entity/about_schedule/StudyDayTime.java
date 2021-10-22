@@ -1,6 +1,8 @@
 package com.codegym.entity.about_schedule;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class StudyDayTime {
     private String studyDayTimeId;
     private String studyDayTimeStudyTime;
     private String studyDayTimeStudyDay;
+
     @JsonBackReference
+    @JsonManagedReference(value = "scheduleDetail_studyDayTime")
     @OneToMany(mappedBy = "studyDayTime")
     private Set<ScheduleDetail> scheduleDetails;
 }

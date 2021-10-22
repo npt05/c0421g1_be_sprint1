@@ -17,7 +17,7 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface IStudentRepository extends JpaRepository<Student, Integer> {
-// Diep: search student
+// Diep: search student 5h12 ngày 22/10
     @Query(value="select student.student_id, student_name, student_date_of_birth, grade_name  from student\n" +
             "join classroom on student.classroom_id = classroom.classroom_id \n" +
             "join mark on student.student_id = mark.student_id\n" +
@@ -25,4 +25,6 @@ public interface IStudentRepository extends JpaRepository<Student, Integer> {
             , nativeQuery = true)
     List<Student> search(Integer studentId, String studentName, Date studentDateOfBirth,
                          String classroom, Double marks);
+
+
 }
