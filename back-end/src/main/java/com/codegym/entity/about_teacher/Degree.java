@@ -1,6 +1,7 @@
 package com.codegym.entity.about_teacher;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class Degree {
     private Integer degreeId;
     private String degreeName;
 
-    @JsonBackReference(value = "teacher-degree")
+
     @OneToMany(mappedBy = "degree")
     private Set<Teacher> teachers;
 }

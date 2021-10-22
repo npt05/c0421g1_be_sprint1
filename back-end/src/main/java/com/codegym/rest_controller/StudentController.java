@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/students")
@@ -19,23 +21,17 @@ public class StudentController {
     @Autowired
     private IStudentService studentService;
 
-    @GetMapping("/{classroomId}")
-    public ResponseEntity<Page<Student>> getStudentsOfClassroom(@PathVariable String classroomId,
-                                                                @PageableDefault(value = 10) Pageable pageable) {
-        try {
-            int classId = Integer.parseInt(classroomId);
-            Page<Student> students = studentService.findByClassroom(classId, pageable);
-            return new ResponseEntity<>(students, HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    @GetMapping
+    public ResponseEntity<List<Student>> showAll() {
+        List<Student> studentList = studentService.findAll();
+        if (studentList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<>(studentList, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Integer> addStudent() {
-        Classroom classroom = new Classroom();
-        Student student = new Student(1, (byte) 1,"a","a", null,"a","a","a","a","a","a","a",false, classroom, null);
+    public ResponseEntity<Integer> addStudent(@RequestBody Student student) {
         Student newStudent = this.studentService.save(student);
         return new ResponseEntity<>(newStudent.getStudentId(), HttpStatus.CREATED);
     }

@@ -3,7 +3,9 @@ package com.codegym.entity.about_teacher;
 import com.codegym.entity.about_account.Account;
 import com.codegym.entity.about_classroom.Classroom;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,8 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "teacherId")
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +34,15 @@ public class Teacher {
     private String teacherPhone;
     private String teacherImage;
 
-    @JsonManagedReference(value = "teacher_degree")
+
     @ManyToOne(targetEntity = Degree.class)
+    @JsonBackReference
     @JoinColumn(name = "degree_id", referencedColumnName = "degreeId")
     private Degree degree;
 
-    @JsonManagedReference(value = "teacher_division")
+
     @ManyToOne(targetEntity = Division.class)
+    @JsonBackReference
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;
 
