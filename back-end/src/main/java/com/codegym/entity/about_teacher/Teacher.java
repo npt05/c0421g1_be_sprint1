@@ -2,7 +2,7 @@ package com.codegym.entity.about_teacher;
 
 import com.codegym.entity.about_account.Account;
 import com.codegym.entity.about_classroom.Classroom;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,21 +29,21 @@ public class Teacher {
     private String teacherPhone;
     private String teacherImage;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne(targetEntity = Degree.class)
     @JoinColumn(name = "degree_id", referencedColumnName = "degreeId")
     private Degree degree;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;
 
-
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
-
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;

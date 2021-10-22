@@ -1,5 +1,6 @@
 package com.codegym.entity.about_teacher;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Division {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer divisionId;
     private String divisionName;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "division")
     private Set<Teacher> teachers;
 }
