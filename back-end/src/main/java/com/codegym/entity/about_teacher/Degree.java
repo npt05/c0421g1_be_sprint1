@@ -11,8 +11,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Degree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,38 @@ public class Degree {
 
     @OneToMany(mappedBy = "degree")
     private Set<Teacher> teachers;
+
+    public Degree(){
+
+    }
+
+    public Degree(Integer degreeId, String degreeName, Set<Teacher> teachers) {
+        this.degreeId = degreeId;
+        this.degreeName = degreeName;
+        this.teachers = teachers;
+    }
+
+    public Integer getDegreeId() {
+        return degreeId;
+    }
+
+    public void setDegreeId(Integer degreeId) {
+        this.degreeId = degreeId;
+    }
+
+    public String getDegreeName() {
+        return degreeName;
+    }
+
+    public void setDegreeName(String degreeName) {
+        this.degreeName = degreeName;
+    }
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 }

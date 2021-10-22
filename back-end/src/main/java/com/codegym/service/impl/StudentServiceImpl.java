@@ -24,8 +24,8 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public Student save(Student student) {
-        return null;
+    public void save(Student student) {
+
     }
 
     @Override

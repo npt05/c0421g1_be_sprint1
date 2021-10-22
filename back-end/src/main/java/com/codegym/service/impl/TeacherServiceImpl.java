@@ -15,7 +15,7 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public List<Teacher> findAll() {
-        return null;
+        return this.teacherRepository.findAllTeacher();
     }
 
     @Override
@@ -24,8 +24,8 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public Teacher save(Teacher teacher) {
-        return null;
+    public void save(Teacher teacher) {
+        this.teacherRepository.createNewTeacher(teacher.getTeacherAddress(), teacher.getTeacherDateOfBirth(), teacher.getTeacherEmail(), teacher.getTeacherGender(), teacher.getTeacherEmail(), teacher.getTeacherName(), teacher.getTeacherPhone(), teacher.getTeacherUniversity(), teacher.getAccount().getAccountId(), teacher.getClassroom().getClassroomId(), teacher.getDivision().getDivisionId(), teacher.getDegree().getDegreeId());
     }
 
     @Override
