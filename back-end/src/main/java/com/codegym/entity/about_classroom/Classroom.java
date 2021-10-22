@@ -39,4 +39,6 @@ public class Classroom {
 
     @OneToOne(mappedBy = "classroom")
     private Schedule schedule;
+
+
 }

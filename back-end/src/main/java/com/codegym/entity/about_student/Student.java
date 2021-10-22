@@ -40,4 +40,5 @@ public class Student {
 
     @OneToMany(mappedBy = "student")
     private Set<Mark> marks;
+
 }

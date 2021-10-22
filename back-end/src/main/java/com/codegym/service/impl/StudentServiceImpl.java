@@ -4,6 +4,8 @@ import com.codegym.entity.about_student.Student;
 import com.codegym.repository.IStudentRepository;
 import com.codegym.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,4 +38,14 @@ public class StudentServiceImpl implements IStudentService {
     public List<Student> search(String search) {
         return null;
     }
+
+    @Override
+    public List<Student> findSearch(String name, String status) {
+        return studentRepository.findSearch("%"+name+"%","%"+status+"%");
+    }
+
+//    @Override
+//    public Page<Student> findSearch(Pageable pageable, String name, String status) {
+//        return studentRepository.findSearch(pageable,"%"+name+"%","%"+status+"%");
+//    }
 }
