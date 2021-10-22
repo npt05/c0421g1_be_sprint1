@@ -1,0 +1,46 @@
+package com.codegym.repository.news;
+
+import com.codegym.entity.about_news.News;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Repository
+@Transactional
+public interface INewsRepository extends JpaRepository<News, Integer> {
+
+
+    // Find all
+    @Query(value = "select news.news_id as newsId, news.news_title as newsTitle, news.news_brief as newsBrief, news.news_content as newsContent," +
+            " news.image_url as imageUrl, news.post_date as postDate, `type`.type_name as typeName " +
+            "from news " +
+            "inner join `type` on news.type_id = `type`.type_id", nativeQuery = true)
+    List<News> findAllNews();
+
+
+    // Find by id
+    @Query(value = "select news.news_id as newsId, news.news_title as newsTitle, news.news_brief as newsBrief, news.news_content as newsContent," +
+            " news.image_url as imageUrl, news.post_date as postDate, `type`.type_name as typeName " +
+            "from news " +
+            "inner join `type` on news.type_id = `type`.type_id" +
+            "where news.news_id = ?1", nativeQuery = true)
+    News findNewsById(int id);
+
+    // Delete
+    @Transactional
+    @Modifying
+    @Query(value = "delete from news where news.news_id = ?1", nativeQuery = true)
+    void delete(int id);
+
+    // Create
+    @Modifying
+    @Query(value = "insert into news(news_title,news_brief,news_content," +
+            "image_url,post_date,type_id) values (:title, :brief, :content, :url, :postDate, :typeId)", nativeQuery = true)
+    void save(@Param("title") String title, @Param("brief") String brief, @Param("content") String content, @Param("url")
+              String url, @Param("postDate") String postDate, @Param("typeId") Integer typeId);
+}
