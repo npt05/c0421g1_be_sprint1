@@ -12,7 +12,9 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface IStudentRepository extends JpaRepository<Student, Integer> {
-    @Query("select s from Student s where s.classroom.classroomId = :id and s.deleteFlag=false ")
+    @Query(value="select " +
+            "* " +
+            "from student s where s.classroom_id = :id and s.delete_flag=false", nativeQuery = true)
     Page<Student> findByClassroomId(int id, Pageable pageable);
 
 }
