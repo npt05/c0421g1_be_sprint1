@@ -1,12 +1,16 @@
 package com.codegym.service.impl;
 
+import com.codegym.entity.about_classroom.Classroom;
+import com.codegym.entity.about_student.Mark;
 import com.codegym.entity.about_student.Student;
 import com.codegym.repository.IStudentRepository;
 import com.codegym.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements IStudentService {
@@ -36,4 +40,12 @@ public class StudentServiceImpl implements IStudentService {
     public List<Student> search(String search) {
         return null;
     }
+
+
+    @Override
+    public List<Student> search(Integer studentId, String studentName, Date studentDateOfBirth, String classroom, Double marks) {
+        return studentRepository.search(studentId, studentName, studentDateOfBirth, classroom, marks);
+    }
+
+
 }

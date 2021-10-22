@@ -37,4 +37,9 @@ public class ClassroomServiceImpl implements IClassroomService {
     public List<Classroom> search(String search) {
         return null;
     }
+
+    @Override
+    public List<Classroom> getClassroomList() {
+        return classroomRepository.getClassroomList();
+    }
 }

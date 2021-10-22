@@ -1,16 +1,16 @@
 package com.codegym.repository;
 
-import com.codegym.entity.about_classroom.Classroom;
+
+import com.codegym.entity.about_student.Mark;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-
 @Repository
 @Transactional
-public interface IClassroomRepository extends JpaRepository<Classroom, Integer> {
-    @Query(value="select * from classroom", nativeQuery = true)
-    List<Classroom> getClassroomList();
+public interface IMarkRepository extends JpaRepository<Mark, Integer> {
+    @Query(value="select * from mark", nativeQuery = true)
+    List<Mark> getMarkList();
 }
