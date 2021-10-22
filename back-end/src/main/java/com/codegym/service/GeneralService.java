@@ -10,7 +10,7 @@ public interface GeneralService <E, T>{
 
     E getById(T id);
 
-    E save(E e);
+    void save(E e);
 
     void delete(T id);
 

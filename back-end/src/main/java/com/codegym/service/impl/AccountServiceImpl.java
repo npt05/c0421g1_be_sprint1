@@ -24,8 +24,7 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public Account save(Account account) {
-        return null;
+    public void save(Account account) {
     }
 
     @Override

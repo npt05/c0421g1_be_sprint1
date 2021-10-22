@@ -24,8 +24,8 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public Teacher save(Teacher teacher) {
-        return null;
+    public void save(Teacher teacher) {
+
     }
 
     @Override
