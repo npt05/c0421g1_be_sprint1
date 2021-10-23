@@ -2,6 +2,7 @@ package com.codegym.entity.about_student;
 
 import com.codegym.entity.about_classroom.Classroom;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ public class Student {
     private String studentParentPhone;
     private boolean deleteFlag;
 
-    @JsonBackReference
+
     @ManyToOne(targetEntity = Classroom.class)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;

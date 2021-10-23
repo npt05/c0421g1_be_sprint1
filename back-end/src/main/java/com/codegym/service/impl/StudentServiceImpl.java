@@ -13,27 +13,9 @@ public class StudentServiceImpl implements IStudentService {
     @Autowired
     private IStudentRepository studentRepository;
 
+    //Danh coding 2:00PM - 23-10-2021
     @Override
-    public List<Student> findAll() {
-        return null;
-    }
-
-    @Override
-    public Student getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Student save(Student student) {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer id) {
-    }
-
-    @Override
-    public List<Student> search(String search) {
-        return null;
+    public Student updateClassForStudent(Integer classId, Integer studentId) {
+        return this.studentRepository.updateClassForStudent(classId, studentId);
     }
 }

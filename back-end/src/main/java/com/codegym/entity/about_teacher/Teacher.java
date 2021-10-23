@@ -29,12 +29,10 @@ public class Teacher {
     private String teacherPhone;
     private String teacherImage;
 
-    @JsonBackReference
     @ManyToOne(targetEntity = Degree.class)
     @JoinColumn(name = "degree_id", referencedColumnName = "degreeId")
     private Degree degree;
 
-    @JsonBackReference
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;

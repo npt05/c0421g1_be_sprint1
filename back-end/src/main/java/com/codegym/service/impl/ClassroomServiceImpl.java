@@ -13,28 +13,24 @@ public class ClassroomServiceImpl implements IClassroomService {
     @Autowired
     private IClassroomRepository classroomRepository;
 
+    //DanhNT coding 2:00PM - 23-10-2021
     @Override
     public List<Classroom> findAll() {
-        return this.classroomRepository.findAll();
+        return this.classroomRepository.findAllList();
     }
 
+    //DanhNT coding 2:00PM - 23-10-2021
     @Override
     public Classroom getById(Integer id) {
-        return null;
+        return this.classroomRepository.findById(id).orElse(null);
     }
 
+
+    //DanhNT coding 2:00PM - 23-10-2021
     @Override
-    public Classroom save(Classroom classroom) {
-        return null;
+    public void updateSchoolYear(String schoolYear, Integer id) {
+        this.classroomRepository.updateSchoolYear(schoolYear, id);
     }
 
-    @Override
-    public void delete(Integer id) {
 
-    }
-
-    @Override
-    public List<Classroom> search(String search) {
-        return null;
-    }
 }
