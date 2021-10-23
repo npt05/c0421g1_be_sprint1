@@ -1,7 +1,5 @@
 package com.codegym.rest_controller;
-
 import com.codegym.dto.AccountDto;
-import com.codegym.entity.about_account.AccountDetails;
 import com.codegym.jwtToken.JwtProvider;
 import com.codegym.jwtToken.ResponseToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +36,7 @@ public class AccountController {
         return new ResponseEntity<>("TEST", HttpStatus.OK);
     }
 
+//    Kiet login HttpBasic 23/10
     @PostMapping("/login")
     public ResponseEntity<?> loginAccount(@Valid @RequestBody AccountDto accountDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(accountDto.getUsername(),accountDto.getPassword()));

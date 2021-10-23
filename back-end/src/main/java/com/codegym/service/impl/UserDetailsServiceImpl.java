@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private IAccountService accountService;
+//    Kiet login 23/10 AuthenticationManager user this function
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = this.accountService.findByUsername(username);

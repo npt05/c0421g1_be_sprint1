@@ -1,5 +1,4 @@
 package com.codegym.jwtToken;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -7,11 +6,11 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//Kiet login 23/10 Provide to generate or decode token
 @Component
 public class JwtProvider {
 

@@ -1,9 +1,7 @@
 package com.codegym.configure;
 
 import com.codegym.jwtToken.JwtFilterRequest;
-import com.codegym.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+//Kiet login 23/10 configuration , authentication by httpBasic and filter
 @Configuration
 @EnableWebSecurity
 public class WebConfigure extends WebSecurityConfigurerAdapter {

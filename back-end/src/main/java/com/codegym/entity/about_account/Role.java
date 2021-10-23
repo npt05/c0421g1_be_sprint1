@@ -1,10 +1,5 @@
 package com.codegym.entity.about_account;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,15 +12,13 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private Set<Account> accounts;
 
-<<<<<<< HEAD
-=======
+
     public Role(Integer roleId, String roleName, Set<Account> accounts) {
         this.roleId = roleId;
         this.roleName = roleName;
         this.accounts = accounts;
     }
 
->>>>>>> manager_account
     public Role() {
     }
 

@@ -1,7 +1,7 @@
 package com.codegym.dto;
-
 import javax.validation.constraints.Size;
 
+//Kiet login 23/10 this class to verify requestBody from angular
 public class AccountDto {
     @Size(max = 30, message = "Khong qua 30 ky tu")
     private String username;

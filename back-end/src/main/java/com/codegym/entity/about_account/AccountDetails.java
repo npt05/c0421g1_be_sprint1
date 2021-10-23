@@ -3,11 +3,10 @@ package com.codegym.entity.about_account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+//Kiet login 23/10 USerDetailsService loadByUsername will return this class
 public class AccountDetails implements UserDetails {
 
     private final Account account;
