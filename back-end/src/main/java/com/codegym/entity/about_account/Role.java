@@ -17,6 +17,15 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private Set<Account> accounts;
 
+<<<<<<< HEAD
+=======
+    public Role(Integer roleId, String roleName, Set<Account> accounts) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.accounts = accounts;
+    }
+
+>>>>>>> manager_account
     public Role() {
     }
 

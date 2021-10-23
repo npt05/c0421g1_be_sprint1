@@ -12,7 +12,6 @@ import java.util.List;
 public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountRepository accountRepository;
-
     @Override
     public Account findByUsername(String username) {
         return this.accountRepository.findAccountByUsername(username);

@@ -1,6 +1,7 @@
 package com.codegym.rest_controller;
 
 import com.codegym.dto.AccountDto;
+import com.codegym.entity.about_account.AccountDetails;
 import com.codegym.jwtToken.JwtProvider;
 import com.codegym.jwtToken.ResponseToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,3 +52,4 @@ public class AccountController {
         return new ResponseEntity<>( new ResponseToken(token, user.getUsername(), roles), HttpStatus.OK);
     }
 }
+

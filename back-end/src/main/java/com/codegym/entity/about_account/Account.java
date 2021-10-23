@@ -1,6 +1,8 @@
 package com.codegym.entity.about_account;
 
 import com.codegym.entity.about_teacher.Teacher;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +22,16 @@ public class Account {
     private boolean lock_flag;
     private boolean delete_flag;
 
-
-
+    public Account(Integer accountId, String accountUsername, String accountPassword, boolean activated_flag, boolean lock_flag, boolean delete_flag, Set<Role> roles, Teacher teacher) {
+        this.accountId = accountId;
+        this.accountUsername = accountUsername;
+        this.accountPassword = accountPassword;
+        this.activated_flag = activated_flag;
+        this.lock_flag = lock_flag;
+        this.delete_flag = delete_flag;
+        this.roles = roles;
+        this.teacher = teacher;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_role", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

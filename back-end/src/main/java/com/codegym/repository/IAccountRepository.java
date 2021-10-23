@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface IAccountRepository extends JpaRepository<Account, Integer> {
-
     @Query(value = "select * from account a where a.account_username= ?1", nativeQuery = true)
     Account findAccountByUsername(String username);
+
 }
