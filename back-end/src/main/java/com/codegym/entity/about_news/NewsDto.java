@@ -1,16 +1,12 @@
 package com.codegym.entity.about_news;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class NewsDto {
 
@@ -19,18 +15,15 @@ public class NewsDto {
     private Integer newsId;
 
     @NotBlank(message = "Vui lòng nhập tiêu đề tin tức.")
-//    @Min(message = "Độ dài tin từ 10 đến 100 ký tự.", value = 10)
-//    @Max(message = "Độ dài tin từ 10 đến 100 ký tự.", value = 100)
+    @Size(message = "Độ dài tin từ 10 đến 100 ký tự.", min = 10, max = 100)
     private String newsTitle;
 
     @NotBlank(message = "Vui lòng nhập phần tóm tắt tin tức.")
-//    @Min(message = "Độ dài tóm tắt từ 50 đến 256 ký tự.", value = 50)
-//    @Max(message = "Độ dài tóm tắt từ 50 đến 256 ký tự.", value = 256)
+    @Size(message = "Độ dài tóm tắt từ 10 đến 256 ký tự.", min = 10, max = 256)
     private String newsBrief;
 
     @NotBlank(message = "Vui lòng nhập phần nội dung tin tức.")
-//    @Min(message = "Độ dài nội dung từ 100 đến 1024 ký tự.", value = 100)
-//    @Max(message = "Độ dài nội dung từ 200 đến 1024 ký tự.", value = 1024)
+    @Size(message = "Độ dài nội dung từ 100 đến 1024 ký tự.", min = 100, max = 1024)
     private String newsContent;
 
     @NotBlank(message = "Vui lòng nhập url hình ảnh.")
