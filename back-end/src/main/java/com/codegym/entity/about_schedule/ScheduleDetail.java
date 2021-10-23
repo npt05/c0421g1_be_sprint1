@@ -33,4 +33,6 @@ public class ScheduleDetail {
     @ManyToOne(targetEntity = Schedule.class)
     @JoinColumn(name = "schedule_id", referencedColumnName = "scheduleId")
     private Schedule schedule;
+
+
 }
