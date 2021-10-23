@@ -7,15 +7,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class ScheduleServiceImpl implements IScheduleService {
+
     @Autowired
     private IScheduleRepository scheduleRepository;
 
-    // Tai_NP coding day 22/10/2021
     @Override
     public List<ScheduleDetail> findScheduleDetailByClassId(Integer id) {
-        return scheduleRepository.findScheduleDetailByClassId(id);
+        return this.scheduleRepository.findScheduleDetailByClassId(id);
     }
+
+    @Override
+    public List<ScheduleDetail> findAll() {
+        return null;
+    }
+
+    @Override
+    public ScheduleDetail getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public ScheduleDetail save(ScheduleDetail e) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
+
+    @Override
+    public List<ScheduleDetail> search(String search) {
+        return null;
+    }
+
 }

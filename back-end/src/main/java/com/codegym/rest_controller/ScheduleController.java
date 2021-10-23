@@ -15,12 +15,10 @@ public class ScheduleController {
     @Autowired
     private IScheduleService scheduleService;
 
-
-    // Tai_NP coding day 22/10/2021
     @GetMapping("/schedule-detail/{classId}")
     public ResponseEntity<List<ScheduleDetail>> showScheduleTail(@PathVariable String classId){
         Integer id = Integer.parseInt(classId);
-        List<ScheduleDetail> scheduleDetailList = scheduleService.findScheduleDetailByClassId(id);
+        List<ScheduleDetail> scheduleDetailList = this.scheduleService.findScheduleDetailByClassId(id);
         if (scheduleDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
