@@ -24,7 +24,7 @@ public class JwtProvider {
                 .withIssuedAt(new Date())
                 .withSubject(userDetail.getUsername())
                 .withArrayClaim("authorization", authorizationAccount)
-                .withExpiresAt(new Date(System.currentTimeMillis() + 30*60*1000))
+                .withExpiresAt(new Date(System.currentTimeMillis()+ 30*60*1000))
                 .sign(Algorithm.HMAC512(secretKey));
     }
 
@@ -52,5 +52,10 @@ public class JwtProvider {
     public String getUsernameFromToken(String token) {
         JWTVerifier verifier = getVerifier();
         return verifier.verify(token).getSubject();
+    }
+
+    public boolean validateExpire(String token){
+        Date dateExpireAt = getVerifier().verify(token).getExpiresAt();
+        return !dateExpireAt.before(new Date());
     }
 }
