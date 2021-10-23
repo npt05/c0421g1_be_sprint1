@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 @RestController
@@ -45,12 +46,16 @@ public class StudentController {
 
     //DungNM - Xoá học sinh theo Id của học sinh
     @DeleteMapping("/{id}")
-    public ResponseEntity<Student> deleteStudentById(@PathVariable String id) {
+    public ResponseEntity<StudentDTO> deleteStudentById(@PathVariable String id) {
         try {
             int studentId = Integer.parseInt(id);
-            Student studentDelete = studentService.delete(studentId);
+            Student studentDelete = studentService.deleteById(studentId);
             if (studentDelete == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            else return new ResponseEntity<>(studentDelete, HttpStatus.OK);
+            else {
+                StudentDTO studentDTO = new StudentDTO();
+                BeanUtils.copyProperties(studentDelete,studentDTO);
+                return new ResponseEntity<>(studentDTO, HttpStatus.OK);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
