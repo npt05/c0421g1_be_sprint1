@@ -41,7 +41,6 @@ public class Teacher {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
 
     @OneToOne(cascade = CascadeType.ALL)
