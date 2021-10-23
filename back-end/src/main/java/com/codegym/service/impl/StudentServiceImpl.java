@@ -22,16 +22,21 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public Student getById(Integer id) {
-        return null;
+        return studentRepository.findById(id).orElse(null);
     }
 
     @Override
     public Student save(Student student) {
-        return null;
+        return studentRepository.save(student);
     }
 
     @Override
-    public void delete(Integer id) {
+    public Student delete(Integer id) {
+        Student student = getById(id);
+        if (student != null){
+            student.setDeleteFlag(true);
+            return save(student);
+        }else return null;
     }
 
     @Override
@@ -40,7 +45,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
 
-
+    //DungNM - Tìm danh sách học sinh theo ID của classroom
     @Override
     public Page<Student> findByClassroom(int classroomId, Pageable pageable) {
         return studentRepository.findByClassroomId(classroomId, pageable);
