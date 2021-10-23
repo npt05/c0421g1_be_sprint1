@@ -20,23 +20,17 @@ public class NewsServiceImpl implements INewsService {
     }
 
     @Override
-    public News getById(Integer id) {
+    public News findById(int id) {
         return this.iNewsRepository.findNewsById(id);
     }
 
     @Override
-    public News save(News news) {
-        this.iNewsRepository.save(news.getNewTitle(), news.getNewsBrief(), news.getNewsContent(), news.getImageUrl(), news.getPostDate(), news.getType().getTypeId());
-        return null;
+    public void saveNews(News news) {
+        this.iNewsRepository.saveNews(news.getNewTitle(), news.getNewsBrief(), news.getNewsContent(), news.getImageUrl(), news.getPostDate(), news.getType().getTypeId());
     }
 
     @Override
-    public void delete(Integer id) {
-        this.iNewsRepository.delete(id);
-    }
-
-    @Override
-    public List<News> search(String search) {
-        return null;
+    public void deleteNews(int id) {
+        this.iNewsRepository.deleteNews(id);
     }
 }

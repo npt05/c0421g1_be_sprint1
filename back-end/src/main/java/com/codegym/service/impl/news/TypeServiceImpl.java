@@ -18,24 +18,4 @@ public class TypeServiceImpl implements ITypeService {
     public List<Type> findAll() {
         return this.iTypeRepository.getAllType();
     }
-
-    @Override
-    public Type getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Type save(Type type) {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    @Override
-    public List<Type> search(String search) {
-        return null;
-    }
 }

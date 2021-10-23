@@ -1,5 +1,6 @@
 package com.codegym.entity.about_news;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class News {
 
 
     @ManyToOne(targetEntity = Type.class)
-    @JsonManagedReference
+    @JsonBackReference
     @JoinColumn(name = "type_id", referencedColumnName = "typeId")
     private Type type;
 
