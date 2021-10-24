@@ -33,7 +33,7 @@ public class Student {
     private String studentParentPhone;
     private boolean deleteFlag;
 
-    @JsonBackReference
+//    @JsonBackReference
     @ManyToOne(targetEntity = Classroom.class)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;

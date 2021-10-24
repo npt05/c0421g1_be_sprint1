@@ -27,7 +27,7 @@ public class StudentController {
 //        return new ResponseEntity<>(studentList,HttpStatus.OK);
 //    }
 @GetMapping("/search")
-public ResponseEntity<List<Student>> searchByName( @RequestParam(defaultValue = "name") String name, @RequestParam("status") String status) {
+public ResponseEntity<List<Student>> searchByName( @RequestParam String name, @RequestParam String status) {
     List<Student> studentList = iStudentService.findSearch(name,status);
     if (studentList.isEmpty()) {
         return  new ResponseEntity<>(HttpStatus.NO_CONTENT);

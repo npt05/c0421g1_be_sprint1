@@ -33,7 +33,7 @@ public class Classroom {
 
     @OneToOne(mappedBy = "classroom")
     private Teacher teacher;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
 
