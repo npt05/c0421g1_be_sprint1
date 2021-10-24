@@ -35,7 +35,6 @@ public class TeacherServiceImpl implements ITeacherService {
     public void delete(Integer id) {
         Teacher teacher = teacherRepository.findByIdTeacherByQuery(id).orElse(null);
         if (teacher != null) {
-            teacher.setDeleteFlag(true);
             teacherRepository.saveDeleteTeacher(teacher.getTeacherId());
         }
     }
@@ -49,5 +48,24 @@ public class TeacherServiceImpl implements ITeacherService {
     @Override
     public Page<Teacher> findAllTeacherByQuery(Pageable pageable) {
         return teacherRepository.findAllTeacherByQuery(pageable);
+    }
+
+    @Override
+    public Teacher findTeacherByIdByQuery(int id) {
+        Teacher teacher  = teacherRepository.findByIdTeacherByQuery(id).orElse(null);
+        if (teacher != null) {
+           return teacher;
+        }
+        return null;
+    }
+
+    @Override
+    public Page<Teacher> findAllTeacherByQueryWithName(Pageable pageable, String name) {
+        return teacherRepository.findAllTeacherByQueryWithKeyword(pageable, name);
+    }
+
+    @Override
+    public Page<Teacher> findAllTeacherByQueryWithDivision(Pageable pageable, int id) {
+        return teacherRepository.findByIdTeacherByDivision(pageable,id);
     }
 }
