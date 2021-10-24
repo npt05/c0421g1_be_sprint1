@@ -19,9 +19,11 @@ public class MarkServiceImpl implements IMarkService {
     }
 
     @Override
-    public Mark getById(Integer id) {
-        return null;
+    public Mark getById(int id) {
+        return iMarkRepository.getById(id);
     }
+
+
 
     @Override
     public void save(Mark mark) {
@@ -29,12 +31,13 @@ public class MarkServiceImpl implements IMarkService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(int id) {
 
     }
 
+
     @Override
-    public List<Mark> search(String search) {
-        return null;
+    public List<Mark> search(String nameStudent, String subject) {
+        return iMarkRepository.findAllStudentByName(nameStudent, subject);
     }
 }

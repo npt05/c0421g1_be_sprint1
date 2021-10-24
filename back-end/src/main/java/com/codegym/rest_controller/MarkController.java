@@ -26,9 +26,25 @@ public class MarkController {
         return new ResponseEntity<>(markList, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
+        Mark mark = this.iMarkService.getById(id);
+        if (mark != null) {
+            return new ResponseEntity<>(mark, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping("/edit/{id}")
     public ResponseEntity<?> updateMark(@RequestBody Mark mark) {
         this.iMarkService.save(mark);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(mark,HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchNameStudent(@RequestParam String nameStudent, String subject) {
+        List<Mark> marks = this.iMarkService.search(nameStudent, subject);
+        return new ResponseEntity<>(marks,HttpStatus.OK);
     }
 }

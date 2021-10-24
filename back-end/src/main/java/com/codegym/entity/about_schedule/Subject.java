@@ -1,6 +1,7 @@
 package com.codegym.entity.about_schedule;
 
 import com.codegym.entity.about_student.Mark;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,49 +13,22 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer subjectId;
     private String subjectName;
 
+    @JsonBackReference(value = "mark_subject")
     @OneToMany(mappedBy = "subject")
     private Set<Mark> marks;
 
+    @JsonBackReference(value = "scheduleDetail_subject")
     @OneToMany(mappedBy = "subject")
     private Set<ScheduleDetail> scheduleDetails;
 
-    public Integer getSubjectId() {
-        return subjectId;
-    }
 
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
-    }
 
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
-    public Set<Mark> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(Set<Mark> marks) {
-        this.marks = marks;
-    }
-
-    public Set<ScheduleDetail> getScheduleDetails() {
-        return scheduleDetails;
-    }
-
-    public void setScheduleDetails(Set<ScheduleDetail> scheduleDetails) {
-        this.scheduleDetails = scheduleDetails;
-    }
 }

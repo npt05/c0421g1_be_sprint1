@@ -13,28 +13,5 @@ public class ClassroomServiceImpl implements IClassroomService {
     @Autowired
     private IClassroomRepository classroomRepository;
 
-    @Override
-    public List<Classroom> findAll() {
-        return null;
-    }
 
-    @Override
-    public Classroom getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public void save(Classroom classroom) {
-
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    @Override
-    public List<Classroom> search(String search) {
-        return null;
-    }
 }

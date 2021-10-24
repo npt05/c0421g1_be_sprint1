@@ -29,12 +29,10 @@ public class Teacher {
     private String teacherPhone;
     private String teacherImage;
 
-    @JsonBackReference
     @ManyToOne(targetEntity = Degree.class)
     @JoinColumn(name = "degree_id", referencedColumnName = "degreeId")
     private Degree degree;
 
-    @JsonBackReference
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;
@@ -43,6 +41,7 @@ public class Teacher {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")

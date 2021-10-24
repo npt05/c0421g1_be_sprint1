@@ -13,28 +13,5 @@ public class TeacherServiceImpl implements ITeacherService {
     @Autowired
     private ITeacherRepository teacherRepository;
 
-    @Override
-    public List<Teacher> findAll() {
-        return null;
-    }
 
-    @Override
-    public Teacher getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public void save(Teacher teacher) {
-
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    @Override
-    public List<Teacher> search(String search) {
-        return null;
-    }
 }

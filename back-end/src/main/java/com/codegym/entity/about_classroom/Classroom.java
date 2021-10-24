@@ -24,7 +24,7 @@ public class Classroom {
     private String classroomName;
     private String classroomSchoolYear;
 
-    @JsonBackReference
+
     @ManyToOne(targetEntity = Grade.class)
     @JoinColumn(name = "grade_id", referencedColumnName = "gradeId")
     private Grade grade;
@@ -34,8 +34,10 @@ public class Classroom {
     @OneToOne(mappedBy = "classroom")
     private Teacher teacher;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
+
 
     @OneToOne(mappedBy = "classroom")
     private Schedule schedule;
