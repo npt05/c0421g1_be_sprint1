@@ -1,9 +1,7 @@
 package com.codegym.service;
 
 import com.codegym.entity.about_schedule.ScheduleDetail;
-
 import java.util.List;
-
 public interface IScheduleService{
 
     List<ScheduleDetail> findAll();
@@ -16,7 +14,6 @@ public interface IScheduleService{
 
     List<ScheduleDetail> search(String search);
 
-    List<ScheduleDetail> findScheduleDetailByClassId(Integer id);
-
+    List<ScheduleDetail> findScheduleDetailByClassId(Integer classId);
 
 }

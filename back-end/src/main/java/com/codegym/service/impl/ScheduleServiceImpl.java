@@ -1,5 +1,6 @@
 package com.codegym.service.impl;
 
+import com.codegym.entity.about_schedule.Schedule;
 import com.codegym.entity.about_schedule.ScheduleDetail;
 import com.codegym.repository.IScheduleRepository;
 import com.codegym.service.IScheduleService;
@@ -11,12 +12,14 @@ import java.util.List;
 public class ScheduleServiceImpl implements IScheduleService {
 
     @Autowired
-    private IScheduleRepository scheduleRepository;
+    private IScheduleRepository scheduleDetailRepository;
+
 
     @Override
-    public List<ScheduleDetail> findScheduleDetailByClassId(Integer id) {
-        return this.scheduleRepository.findScheduleDetailByClassId(id);
+    public List<ScheduleDetail> findScheduleDetailByClassId(Integer classId) {
+        return this.scheduleDetailRepository.findScheduleDetailByClassId(classId);
     }
+
 
     @Override
     public List<ScheduleDetail> findAll() {
