@@ -10,31 +10,18 @@ import java.util.List;
 
 @Service
 public class TeacherServiceImpl implements ITeacherService {
+
     @Autowired
-    private ITeacherRepository teacherRepository;
-
+    private ITeacherRepository iTeacherRepository;
+    //MinhNN 24/10 find teacher by id account
     @Override
-    public List<Teacher> findAll() {
-        return null;
+    public Teacher getById(int id) {
+        return iTeacherRepository.getById(id);
     }
 
+    //MinhNN 24/10 update infor teacher
     @Override
-    public Teacher getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Teacher save(Teacher teacher) {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    @Override
-    public List<Teacher> search(String search) {
-        return null;
+    public void update(Teacher teacher, int accountId) {
+        iTeacherRepository.editPersonInfor(teacher.getTeacherPhone(), teacher.getTeacherAddress(), teacher.getTeacherEmail(), accountId);
     }
 }
