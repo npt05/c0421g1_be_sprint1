@@ -1,7 +1,7 @@
 package com.codegym.entity.about_schedule;
 
 import com.codegym.entity.about_classroom.Classroom;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class Schedule {
 
     private boolean deleteFlag;
 
-    @JsonManagedReference(value = "schedule_scheduleDetail")
+    @JsonBackReference(value = "schedule_scheduleDetail")
     @OneToMany(mappedBy = "schedule")
     private Set<ScheduleDetail> scheduleDetails;
 
