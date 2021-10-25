@@ -25,7 +25,6 @@ public class Classroom {
     private String classroomName;
     private String classroomSchoolYear;
 
-    @JsonManagedReference(value = "classroom_grade")
     @ManyToOne(targetEntity = Grade.class)
     @JoinColumn(name = "grade_id", referencedColumnName = "gradeId")
     private Grade grade;
@@ -33,10 +32,11 @@ public class Classroom {
     private boolean deleteFlag;
 
 
-    @OneToOne(mappedBy = "classroom")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id",referencedColumnName = "teacherId")
     private Teacher teacher;
 
-    @JsonBackReference(value = "student_classroom")
+
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
 

@@ -24,7 +24,7 @@ public class Student {
     private Byte studentGender;
     private String studentFatherName;
     private String studentMotherName;
-    private Date studentDateOfBirth;
+    private String studentDateOfBirth;
     private String studentEthnicity;
     private String studentAddress;
     private String studentName;
@@ -34,12 +34,11 @@ public class Student {
     private String studentParentPhone;
     private boolean deleteFlag;
 
-    @JsonManagedReference(value = "student_classroom")
     @ManyToOne(targetEntity = Classroom.class)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;
 
-    @JsonManagedReference(value = "student_mark")
+    @JsonBackReference(value = "student_mark")
     @OneToMany(mappedBy = "student")
     private Set<Mark> marks;
 }
