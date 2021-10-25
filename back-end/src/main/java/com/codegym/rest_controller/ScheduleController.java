@@ -58,10 +58,6 @@ public class ScheduleController {
     @GetMapping(value = "/schedule-classroom/{id}")
     public ResponseEntity<List<ScheduleDetail>> scheduleDetailClassroom(@PathVariable(required = false) Integer id) {
         List<ScheduleDetail> scheduleDetailListOfClassroom = this.scheduleService.findScheduleDetailByClassroomId(id);
-//        Set<ScheduleDetail> scheduleDetails = null;
-//        for (Schedule n : scheduleDetailListOfClassroom){
-//            scheduleDetails = n.getScheduleDetails();
-//        }
         if (scheduleDetailListOfClassroom.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
