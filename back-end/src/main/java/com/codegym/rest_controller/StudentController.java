@@ -40,7 +40,7 @@ public class StudentController {
 //                student.getStudentParentPhone(), student.getStudentReligion());
 //        return new ResponseEntity<>(student.getStudentId(), HttpStatus.CREATED);
 //    }
-    public ResponseEntity<Integer> addStudent(@RequestBody StudentDto studentDto) {
+    public ResponseEntity<Integer> addStudent(@RequestBody @Validated StudentDto studentDto) {
         Student student = new Student();
         BeanUtils.copyProperties(studentDto, student);
         studentService.saveStudent(student);
@@ -48,7 +48,7 @@ public class StudentController {
     }
 
     //LamNT do editStudent function
-    @PutMapping("/edit")
+    @PatchMapping("/edit")
     public ResponseEntity<?> editStudent(@RequestBody @Validated StudentDto studentDto) {
         Student student = new Student();
         BeanUtils.copyProperties(studentDto, student);

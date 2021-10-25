@@ -1,6 +1,7 @@
 package com.codegym.entity.about_student;
 
 import com.codegym.entity.about_schedule.Subject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,11 @@ public class Mark {
     private Integer markId;
 
     @ManyToOne(targetEntity = Student.class)
-    @JoinColumn(name = "student_id",referencedColumnName = "studentId")
+    @JoinColumn(name = "student_id", referencedColumnName = "studentId")
     private Student student;
 
     @ManyToOne(targetEntity = Subject.class)
-    @JoinColumn(name = "subject_id",referencedColumnName = "subjectId")
+    @JoinColumn(name = "subject_id", referencedColumnName = "subjectId")
     private Subject subject;
 
     private Double markPointNumber1;

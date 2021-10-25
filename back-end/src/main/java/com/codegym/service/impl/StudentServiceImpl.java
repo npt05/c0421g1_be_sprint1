@@ -40,11 +40,6 @@ public class StudentServiceImpl implements IStudentService {
     }
 
 
-    @Override
-    public Page<Student> findByClassroom(int classroomId, Pageable pageable) {
-        return null;
-    }
-
     //LamNT saveStudent function
     @Override
     public void saveStudent(Student student) {

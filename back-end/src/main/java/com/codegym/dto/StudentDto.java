@@ -2,38 +2,56 @@ package com.codegym.dto;
 
 import com.codegym.entity.about_classroom.Classroom;
 import com.codegym.entity.about_student.Mark;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 
 //LamNT create StudentDto and Validate
 
 public class StudentDto {
+    //    private Integer studentId;
+//    private Byte studentGender;
+////    @NotEmpty(message = "Họ và tên cha không được để trống.")
+////    @Size(min = 5, message = "Họ và tên cha phải nhiều hơn 5 chữ cái.")
+//    private String studentFatherName;
+////    @NotEmpty(message = "Họ và tên mẹ không được để trống.")
+//    private String studentMotherName;
+////    @NotBlank(message = "Ngày sinh không được để trống.")
+//    private String studentDateOfBirth;
+////    @NotEmpty(message = "Dân tộc không được để trống.")
+//    private String studentEthnicity;
+////    @NotEmpty(message = "Quê quán không được để trống.")
+//    private String studentAddress;
+////    @NotEmpty(message = "Họ và tên học sinh không được để trống.")
+////    @Size(min = 5, message = "Họ và tên học sinh phải nhiều hơn 5 chữ cái.")
+//    private String studentName;
+//    private String studentReligion;
+//    private String studentImage;
+//    private String studentStatus;
+////    @Pattern(regexp = "^(09[0|1])+([0-9]{7})\\b$", message = "Số điện thoại sai định dạng." +
+////            "\n VD:090xxxxxxx, x gồm 7 chữ số")
+//    private String studentParentPhone;
+//    private boolean deleteFlag;
     private Integer studentId;
     private Byte studentGender;
-//    @NotEmpty(message = "Họ và tên cha không được để trống.")
-//    @Size(min = 5, message = "Họ và tên cha phải nhiều hơn 5 chữ cái.")
     private String studentFatherName;
-//    @NotEmpty(message = "Họ và tên mẹ không được để trống.")
     private String studentMotherName;
-//    @NotBlank(message = "Ngày sinh không được để trống.")
     private String studentDateOfBirth;
-//    @NotEmpty(message = "Dân tộc không được để trống.")
     private String studentEthnicity;
-//    @NotEmpty(message = "Quê quán không được để trống.")
+//    @NotBlank
     private String studentAddress;
-//    @NotEmpty(message = "Họ và tên học sinh không được để trống.")
-//    @Size(min = 5, message = "Họ và tên học sinh phải nhiều hơn 5 chữ cái.")
+//    @NotNull(message = "Họ và tên học sinh không được để trống")
+////    @Pattern(regexp="^[A-Za-z]*$",message = "Họ và tên học sinh không được nhập số và ký tự đặc biệt")
+//    @Size(min = 5, max = 50, message = "Họ và tên học sinh phải lớn hơn 5 và nhỏ hơn 50")
     private String studentName;
     private String studentReligion;
     private String studentImage;
     private String studentStatus;
-//    @Pattern(regexp = "^(09[0|1])+([0-9]{7})\\b$", message = "Số điện thoại sai định dạng." +
-//            "\n VD:090xxxxxxx, x gồm 7 chữ số")
     private String studentParentPhone;
     private boolean deleteFlag;
 

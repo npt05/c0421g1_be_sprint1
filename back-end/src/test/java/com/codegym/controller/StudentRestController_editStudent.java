@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class StudentRestController_createStudent {
+public class StudentRestController_editStudent {
 
     @Autowired
     private MockMvc mockMvc;
@@ -25,7 +25,7 @@ public class StudentRestController_createStudent {
     private ObjectMapper objectMapper;
 
     @Test
-    public void createStudent_name_13() throws Exception {
+    public void editStudent_name_19() throws Exception {
         StudentDto studentDto = new StudentDto();
         studentDto.setStudentName(null);
         studentDto.setStudentAddress("Huế");
@@ -37,8 +37,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -46,9 +47,9 @@ public class StudentRestController_createStudent {
     }
 
     @Test
-    public void createStudent_address_14() throws Exception {
+    public void editStudent_address_20() throws Exception {
         StudentDto studentDto = new StudentDto();
-        studentDto.setStudentName("Lam");
+        studentDto.setStudentName("Nguyen Thanh Binh");
         studentDto.setStudentAddress("");
         studentDto.setStudentDateOfBirth("2000-10-16");
         studentDto.setStudentEthnicity("Tày");
@@ -58,8 +59,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -67,10 +69,10 @@ public class StudentRestController_createStudent {
     }
 
     @Test
-    public void createStudent_name_15() throws Exception {
+    public void editStudent_address_21() throws Exception {
         StudentDto studentDto = new StudentDto();
         studentDto.setStudentName("123");
-        studentDto.setStudentAddress("Huế");
+        studentDto.setStudentAddress("Huees");
         studentDto.setStudentDateOfBirth("2000-10-16");
         studentDto.setStudentEthnicity("Tày");
         studentDto.setStudentFatherName("Huy");
@@ -79,8 +81,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -88,10 +91,10 @@ public class StudentRestController_createStudent {
     }
 
     @Test
-    public void createStudent_name_16() throws Exception {
+    public void editStudent_address_22() throws Exception {
         StudentDto studentDto = new StudentDto();
         studentDto.setStudentName("lam");
-        studentDto.setStudentAddress("Huế");
+        studentDto.setStudentAddress("Huees");
         studentDto.setStudentDateOfBirth("2000-10-16");
         studentDto.setStudentEthnicity("Tày");
         studentDto.setStudentFatherName("Huy");
@@ -100,8 +103,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -109,10 +113,10 @@ public class StudentRestController_createStudent {
     }
 
     @Test
-    public void createStudent_name_17() throws Exception {
+    public void editStudent_address_23() throws Exception {
         StudentDto studentDto = new StudentDto();
         studentDto.setStudentName("qưeqwewqeqweqweqwewqeqweqweqwewqewqewqewqwqwqewqwqa");
-        studentDto.setStudentAddress("Huế");
+        studentDto.setStudentAddress("Huees");
         studentDto.setStudentDateOfBirth("2000-10-16");
         studentDto.setStudentEthnicity("Tày");
         studentDto.setStudentFatherName("Huy");
@@ -121,8 +125,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -130,9 +135,9 @@ public class StudentRestController_createStudent {
     }
 
     @Test
-    public void createStudent_18() throws Exception {
+    public void editStudent_name_24() throws Exception {
         StudentDto studentDto = new StudentDto();
-        studentDto.setStudentName("Nguyen Thanh Lam");
+        studentDto.setStudentName("Nguyen Thanh Binh");
         studentDto.setStudentAddress("Huế");
         studentDto.setStudentDateOfBirth("2000-10-16");
         studentDto.setStudentEthnicity("Tày");
@@ -142,8 +147,9 @@ public class StudentRestController_createStudent {
         studentDto.setStudentMotherName("Hùng");
         studentDto.setStudentReligion("Không");
         studentDto.setStudentStatus("Đang học");
+        studentDto.setStudentId(1);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/students/add")
+        this.mockMvc.perform(MockMvcRequestBuilders.patch("/api/students/edit")
                         .content(this.objectMapper.writeValueAsString(studentDto))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

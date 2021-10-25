@@ -35,7 +35,6 @@ public class Classroom {
     @JoinColumn(name = "teacher_id",referencedColumnName = "teacherId")
     private Teacher teacher;
 
-
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
 

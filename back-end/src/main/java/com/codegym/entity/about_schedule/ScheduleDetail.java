@@ -19,19 +19,18 @@ public class ScheduleDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer scheduleDetailId;
 
-    @JsonBackReference
+    @JsonBackReference(value = "scheduleDetail_subject")
     @ManyToOne(targetEntity = Subject.class)
     @JoinColumn(name = "subject_id", referencedColumnName = "subjectId")
     private Subject subject;
 
-    @JsonBackReference
+    @JsonBackReference(value = "scheduleDetail_daytime")
     @ManyToOne(targetEntity = StudyDayTime.class)
     @JoinColumn(name = "study_day_time_id", referencedColumnName = "studyDayTimeId")
     private StudyDayTime studyDayTime;
 
-    @JsonBackReference
+    @JsonBackReference(value = "scheduleDetail_schedule")
     @ManyToOne(targetEntity = Schedule.class)
     @JoinColumn(name = "schedule_id", referencedColumnName = "scheduleId")
     private Schedule schedule;
-
 }
