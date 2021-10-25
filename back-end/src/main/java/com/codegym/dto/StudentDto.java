@@ -1,8 +1,7 @@
-package com.codegym.entity.about_student;
+package com.codegym.dto;
 
 import com.codegym.entity.about_classroom.Classroom;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.codegym.entity.about_student.Mark;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +11,12 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
-    @Id
+public class StudentDto {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
     private Byte studentGender;
@@ -34,11 +32,7 @@ public class Student {
     private String studentParentPhone;
     private boolean deleteFlag;
 
-    @ManyToOne(targetEntity = Classroom.class)
-    @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;
 
-
-    @OneToMany(mappedBy = "student")
     private Set<Mark> marks;
 }

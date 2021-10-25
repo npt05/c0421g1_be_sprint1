@@ -22,7 +22,7 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/classroom")
+@RequestMapping("/api/class-room")
 public class ClassroomController {
 
     //DanhNT coding controller
@@ -39,7 +39,7 @@ public class ClassroomController {
 
     //DanhNT coding controller show list
     @GetMapping
-    public ResponseEntity<Page<Classroom>> showList(@PageableDefault(value = 5) Pageable pageable) {
+    public ResponseEntity<Page<Classroom>> showList(@PageableDefault(size = 5) Pageable pageable) {
         Page<Classroom> classroomList = this.classroomService.findAllPage(pageable);
         if (classroomList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -58,7 +58,7 @@ public class ClassroomController {
     }
 
     //DanhNT - coding controller for edit class information
-    @PutMapping(value = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateClass(@RequestBody Classroom classroom) {
         Set<Student> studentList = classroom.getStudents();
 
@@ -66,8 +66,10 @@ public class ClassroomController {
                 classroom.getTeacher().getTeacherId(),
                 classroom.getClassroomId());
 
-        for (Student student : studentList) {
-            this.studentService.updateClassForStudent(classroom.getClassroomId(), student.getStudentId());
+        if (studentList!= null) {
+            for (Student student : studentList) {
+                this.studentService.updateClassForStudent(classroom.getClassroomId(), student.getStudentId());
+            }
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -77,6 +79,14 @@ public class ClassroomController {
     @PutMapping(value = "/promote/{id}")
     public ResponseEntity<?> promoteClass(@PathVariable Integer id) {
         Classroom classroom = this.classroomService.getById(id);
+        String[] a = classroom.getClassroomName().split("");
+        if (a[0].equals("5")) {
+            classroom.setDeleteFlag(true);
+        } else {
+            a[0] = String.valueOf(Integer.parseInt(a[0]) + 1);
+            String a2 = String.join("", a);
+            classroom.setClassroomName(a2);
+        }
         Set<Student> studentSet = classroom.getStudents();
         for (Student student : studentSet) {
             Set<Mark> mark = student.getMarks();
@@ -85,14 +95,17 @@ public class ClassroomController {
                 avgList.add((m.getMarkPointNumber1() + m.getMarkPointNumber2() * 2 + m.getMarkPointNumber3() * 3) / 6);
             }
             Double avgMark = avgArray(avgList);
-            if (avgMark < 3.5) {
+            if (avgMark < 3.5 && !student.getStudentStatus().equals(student.getClassroom().getClassroomName())) {
                 student.setStudentStatus(student.getClassroom().getClassroomName());
+            } else {
+                student.setStudentStatus("Đang học");
             }
             if (student.getClassroom().getGrade().getGradeId() == 1) {
                 student.setClassroom(null);
+            } else {
+//                Classroom demoteClass = this.classroomService.
+//                student.setClassroom();
             }
-
-
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
