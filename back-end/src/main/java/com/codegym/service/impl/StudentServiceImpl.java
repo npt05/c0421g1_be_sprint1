@@ -40,12 +40,14 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public List<Student> findSearch(String name, String status) {
-        return studentRepository.findSearch("%"+name+"%","%"+status+"%");
+    public Page<Student> findSearch(Pageable pageable, String name, String status) {
+        return studentRepository.findSearch(pageable,"%"+name+"%","%"+status+"%");
     }
 
 //    @Override
-//    public Page<Student> findSearch(Pageable pageable, String name, String status) {
-//        return studentRepository.findSearch(pageable,"%"+name+"%","%"+status+"%");
+//    public List<Student> findSearch(String name, String status) {
+//        return studentRepository.findSearch("%"+name+"%","%"+status+"%");
 //    }
+
+
 }

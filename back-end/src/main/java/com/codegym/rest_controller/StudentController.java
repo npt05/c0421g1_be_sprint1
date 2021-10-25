@@ -18,17 +18,10 @@ import java.util.List;
 public class StudentController {
     @Autowired
     IStudentService iStudentService;
-//    @GetMapping("/search")
-//    public ResponseEntity<Page<Student>> searchByName(@PageableDefault(value = 1) Pageable pageable, @RequestParam String name, @RequestParam String status) {
-//        Page<Student> studentList = iStudentService.findSearch(pageable,name,status);
-//        if (studentList.isEmpty()) {
-//            return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<>(studentList,HttpStatus.OK);
-//    }
+// Hàm search by Nhật
 @GetMapping("/search")
-public ResponseEntity<List<Student>> searchByName( @RequestParam String name, @RequestParam String status) {
-    List<Student> studentList = iStudentService.findSearch(name,status);
+public ResponseEntity<Page<Student>> searchByName(@PageableDefault(value = 1) Pageable pageable, @RequestParam String name, @RequestParam String status) {
+    Page<Student> studentList = iStudentService.findSearch(pageable,name,status);
     if (studentList.isEmpty()) {
         return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
