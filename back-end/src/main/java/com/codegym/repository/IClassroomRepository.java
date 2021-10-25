@@ -14,6 +14,6 @@ public interface IClassroomRepository extends JpaRepository<Classroom, Integer> 
 
     // TaiNP query findALL class
     @Query(value = "select classroom.classroom_id, classroom.classroom_name, classroom.classroom_school_year, " +
-            "classroom.classroom_delete_flag, classroom.grade_id from classroom ",  nativeQuery = true)
+            "classroom.delete_flag, classroom.grade_id from classroom ",  nativeQuery = true)
     List<Classroom> findAllClass();
 }

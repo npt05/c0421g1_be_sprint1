@@ -1,19 +1,16 @@
 package com.codegym.service;
 
-import com.codegym.entity.about_schedule.ScheduleDetail;
+import com.codegym.entity.about_schedule.Schedule;
+
 import java.util.List;
 public interface IScheduleService{
 
-    List<ScheduleDetail> findAll();
+    List<Schedule> findAll();
 
-    ScheduleDetail getById(Integer id);
+    Schedule getById(Integer id);
 
-    ScheduleDetail save(ScheduleDetail e);
+    Schedule save(Schedule e);
 
     void delete(Integer id);
-
-    List<ScheduleDetail> search(String search);
-
-    List<ScheduleDetail> findScheduleDetailByClassId(Integer classId);
 
 }

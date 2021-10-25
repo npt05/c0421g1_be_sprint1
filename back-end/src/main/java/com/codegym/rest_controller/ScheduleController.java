@@ -5,6 +5,7 @@ import com.codegym.entity.about_schedule.Schedule;
 import com.codegym.entity.about_schedule.ScheduleDetail;
 import com.codegym.service.IClassroomService;
 import com.codegym.service.IGradeService;
+import com.codegym.service.IScheduleDetailService;
 import com.codegym.service.IScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/schedules")
 public class ScheduleController {
+
     @Autowired
-    private IScheduleService scheduleService;
+    private IScheduleDetailService scheduleDetailService;
 
     @Autowired
     private IGradeService gradeService;
@@ -46,10 +48,11 @@ public class ScheduleController {
         return new ResponseEntity<>(classrooms, HttpStatus.OK);
     }
 
+
     // TaiNP 24/10/2021 method return schedule of class_id
-    @GetMapping("/schedule/{classId}")
+    @GetMapping("/schedule-detail/{classId}")
     public ResponseEntity<List<ScheduleDetail>> showScheduleTail(@PathVariable(required = false) Integer classId){
-        List<ScheduleDetail> scheduleDetailList = this.scheduleService.findScheduleDetailByClassId(classId);
+        List<ScheduleDetail> scheduleDetailList = this.scheduleDetailService.findScheduleDetailByClassId(classId);
         if (scheduleDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
