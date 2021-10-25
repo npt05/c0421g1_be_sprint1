@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 
 public class NewsDto {
 
@@ -29,14 +31,23 @@ public class NewsDto {
     @NotBlank(message = "Vui lòng nhập url hình ảnh.")
     private String imageUrl;
 
-    @NotBlank(message = "Vui lòng chọn ngày đăng.")
-    private String postDate;
+    private Date postDate;
 
     @JsonBackReference
+    @NotNull(message = "Vui lòng chọn thể loại tin.")
     private Type type;
 
 
     public NewsDto() {
+    }
+
+    public NewsDto(@NotBlank(message = "Vui lòng nhập tiêu đề tin tức.") @Size(message = "Độ dài tin từ 10 đến 100 ký tự.", min = 10, max = 100) String newsTitle, @NotBlank(message = "Vui lòng nhập phần tóm tắt tin tức.") @Size(message = "Độ dài tóm tắt từ 10 đến 256 ký tự.", min = 10, max = 256) String newsBrief, @NotBlank(message = "Vui lòng nhập phần nội dung tin tức.") @Size(message = "Độ dài nội dung từ 100 đến 1024 ký tự.", min = 100, max = 1024) String newsContent, @NotBlank(message = "Vui lòng nhập url hình ảnh.") String imageUrl, Date postDate, @NotNull(message = "Vui lòng chọn thể loại tin.") Type type) {
+        this.newsTitle = newsTitle;
+        this.newsBrief = newsBrief;
+        this.newsContent = newsContent;
+        this.imageUrl = imageUrl;
+        this.postDate = postDate;
+        this.type = type;
     }
 
     public Integer getNewsId() {
@@ -79,11 +90,11 @@ public class NewsDto {
         this.imageUrl = imageUrl;
     }
 
-    public String getPostDate() {
+    public Date getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(String postDate) {
+    public void setPostDate(Date postDate) {
         this.postDate = postDate;
     }
 

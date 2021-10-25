@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table
@@ -14,9 +15,10 @@ public class News {
     private Integer newsId;
     private String newsTitle;
     private String newsBrief;
+    @Column(columnDefinition = "varchar(1024)")
     private String newsContent;
     private String imageUrl;
-    private String postDate;
+    private Date postDate;
 
 
     @ManyToOne(targetEntity = Type.class)
@@ -27,7 +29,7 @@ public class News {
     public News() {
     }
 
-    public News(Integer newsId, String newTitle, String newsBrief, String newsContent, String imageUrl, String postDate, Type type) {
+    public News(Integer newsId, String newTitle, String newsBrief, String newsContent, String imageUrl, Date postDate, Type type) {
         this.newsId = newsId;
         this.newsTitle = newTitle;
         this.newsBrief = newsBrief;
@@ -77,11 +79,11 @@ public class News {
         this.newsContent = newsContent;
     }
 
-    public String getPostDate() {
+    public Date getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(String postDate) {
+    public void setPostDate(Date postDate) {
         this.postDate = postDate;
     }
 

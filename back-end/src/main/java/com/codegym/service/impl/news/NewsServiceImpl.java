@@ -4,6 +4,8 @@ import com.codegym.entity.about_news.News;
 import com.codegym.repository.news.INewsRepository;
 import com.codegym.service.news.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class NewsServiceImpl implements INewsService {
     private INewsRepository iNewsRepository;
 
     @Override
-    public List<News> findAll() {
-        return this.iNewsRepository.findAllNews();
+    public Page<News> findAll(Pageable pageable) {
+        return this.iNewsRepository.findAllNews(pageable);
     }
 
     @Override

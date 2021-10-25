@@ -21,6 +21,11 @@ public class Type {
     public Type() {
     }
 
+    public Type(Integer typeId, String typeName) {
+        this.typeId = typeId;
+        this.typeName = typeName;
+    }
+
     public Type(Integer typeId, String typeName, List<News> newsList) {
         this.typeId = typeId;
         this.typeName = typeName;

@@ -7,8 +7,10 @@ import com.codegym.service.news.INewsService;
 import com.codegym.service.news.ITypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +29,8 @@ public class NewsController {
     private ITypeService iTypeService;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<List<News>> findAllNews() {
-        List<News> newsList = this.iNewsService.findAll();
+    public ResponseEntity<Page<News>> findAllNews(@PageableDefault(size = 3)Pageable pageable) {
+        Page<News> newsList = this.iNewsService.findAll(pageable);
 
         if (newsList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -73,10 +75,11 @@ public class NewsController {
     @PostMapping(value = "/create")
     public ResponseEntity<?> createNews(@Valid @RequestBody NewsDto newsDto, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.OK);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.FORBIDDEN);
         }
         News news = new News();
         BeanUtils.copyProperties(newsDto, news);
+        news.setPostDate(new java.sql.Date(System.currentTimeMillis()));
         news.setNewTitle(newsDto.getNewsTitle());
         this.iNewsService.saveNews(news);
         return new ResponseEntity<>(HttpStatus.OK);

@@ -1,13 +1,13 @@
 package com.codegym.service.news;
 
 import com.codegym.entity.about_news.News;
-import com.codegym.service.GeneralService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface INewsService  {
 
-    List<News> findAll();
+    Page<News> findAll(Pageable pageable);
 
     News findById(int id);
 

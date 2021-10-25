@@ -1,6 +1,8 @@
 package com.codegym.repository.news;
 
 import com.codegym.entity.about_news.News;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -8,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -25,7 +28,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
     @Query(value = "select * " +
             "from news " +
             "inner join `type` on news.type_id = `type`.type_id order by news.post_date desc", nativeQuery = true)
-    List<News> findAllNews();
+    Page<News> findAllNews(Pageable pageable);
 
 
     // Find by id
@@ -53,5 +56,5 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
     @Query(value = "insert into news(news_title, news_brief,news_content," +
             "image_url,post_date,type_id) values (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
     void saveNews(@Param("newsTitle") String newsTitle, @Param("newsBrief") String newsBrief, @Param("newsContent") String newsContent, @Param("imageUrl")
-              String imageUrl, @Param("postDate") String postDate, @Param("type") Integer type);
+              String imageUrl, @Param("postDate") Date postDate, @Param("type") Integer type);
 }
