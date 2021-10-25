@@ -19,9 +19,9 @@ public class ScheduleDetailDto {
     @NotBlank (message = "Vui lòng chọn môn học")
     private Integer scheduleDetailId;
     @NotBlank (message = "Vui lòng chọn môn học")
-    private Subject subject;
+    private SubjectDto subject;
     @NotBlank (message = "Vui lòng chọn môn học")
-    private StudyDayTime studyDayTime;
+    private StudyDayTimeDto studyDayTime;
     @NotBlank (message = "Vui lòng chọn môn học")
-    private Schedule schedule;
+    private ScheduleDto schedule;
 }

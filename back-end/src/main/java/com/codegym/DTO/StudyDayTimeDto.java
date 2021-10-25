@@ -1,24 +1,20 @@
-package com.codegym.entity.about_schedule;
+package com.codegym.DTO;
 
+import com.codegym.entity.about_schedule.ScheduleDetail;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Set;
-
-@Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudyDayTime {
-    @Id
+public class StudyDayTimeDto {
     private Integer studyDayTimeId;
     private String studyDayTimeStudyTime;
     private String studyDayTimeStudyDay;
 
-    @OneToMany(mappedBy = "studyDayTime")
     private Set<ScheduleDetail> scheduleDetails;
 }
