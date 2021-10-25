@@ -52,9 +52,12 @@ public class ScheduleController {
     // TaiNP 24/10/2021 method return schedule of class_id
     @GetMapping("/schedule-detail/{classId}")
     public ResponseEntity<List<ScheduleDetail>> showScheduleTail(@PathVariable(required = false) Integer classId){
+        if(classId == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         List<ScheduleDetail> scheduleDetailList = this.scheduleDetailService.findScheduleDetailByClassId(classId);
         if (scheduleDetailList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(scheduleDetailList, HttpStatus.OK);
     }
