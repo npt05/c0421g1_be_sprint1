@@ -65,7 +65,7 @@ public class ScheduleController_UpdateSchedule {
                 .content(this.objectMapper.writeValueAsString(scheduleDetailDto))
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is2xxSuccessful());
     }
 
 }
