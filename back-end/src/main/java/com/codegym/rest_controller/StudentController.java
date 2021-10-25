@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.function.Function;
 
 @RestController
@@ -29,6 +28,9 @@ public class StudentController {
         try {
             int classId = Integer.parseInt(classroomId);
             Page<Student> students = studentService.findByClassroom(classId, pageable);
+            if (students.getContent().size() == 0) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
             Page<StudentDTO> studentDTOPage = students.map(new Function<Student, StudentDTO>() {
                 @Override
                 public StudentDTO apply(Student entity) {
@@ -45,7 +47,7 @@ public class StudentController {
     }
 
     //DungNM - Xoá học sinh theo Id của học sinh
-    @DeleteMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<StudentDTO> deleteStudentById(@PathVariable String id) {
         try {
             int studentId = Integer.parseInt(id);
