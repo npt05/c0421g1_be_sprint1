@@ -1,18 +1,21 @@
 package com.codegym.rest_controller;
+
 import com.codegym.entity.about_classroom.Classroom;
 import com.codegym.entity.about_classroom.Grade;
 import com.codegym.entity.about_schedule.Schedule;
 import com.codegym.entity.about_schedule.ScheduleDetail;
-import com.codegym.service.IClassroomService;
-import com.codegym.service.IGradeService;
-import com.codegym.service.IScheduleDetailService;
-import com.codegym.service.IScheduleService;
+import com.codegym.entity.about_student.Student;
+import com.codegym.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,6 +28,7 @@ public class ScheduleController {
     @Autowired
     private IGradeService gradeService;
 
+
     @Autowired
     private IClassroomService classroomService;
 
@@ -33,17 +37,17 @@ public class ScheduleController {
     public ResponseEntity<List<Grade>> showListGrade() {
         List<Grade> grades = this.gradeService.findAll();
         if (grades == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(grades, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(grades, HttpStatus.OK);
     }
 
     // TaiNP 24/10/2021 method return list  class
     @GetMapping(value = "/classroom")
-    public ResponseEntity<List<Classroom>> showListClass(){
+    public ResponseEntity<List<Classroom>> showListClass() {
         List<Classroom> classrooms = classroomService.findAll();
-        if(classrooms.isEmpty()){
-           return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (classrooms.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(classrooms, HttpStatus.OK);
     }
@@ -51,14 +55,20 @@ public class ScheduleController {
 
     // TaiNP 24/10/2021 method return schedule of class_id
     @GetMapping("/schedule-detail/{classId}")
-    public ResponseEntity<List<ScheduleDetail>> showScheduleTail(@PathVariable(required = false) Integer classId){
+    public ResponseEntity<List<ScheduleDetail>> showScheduleTailByIdClass(@PathVariable Optional<Integer> classId) {
         if(classId == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
         }
-        List<ScheduleDetail> scheduleDetailList = this.scheduleDetailService.findScheduleDetailByClassId(classId);
+        if(!classId.isPresent()){
+            return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
+        }
+        List<ScheduleDetail> scheduleDetailList = this.scheduleDetailService.findScheduleDetailByClassId(classId.get());
         if (scheduleDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(scheduleDetailList, HttpStatus.OK);
     }
+
+
+
 }

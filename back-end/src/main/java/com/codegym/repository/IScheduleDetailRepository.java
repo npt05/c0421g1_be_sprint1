@@ -14,4 +14,6 @@ public interface IScheduleDetailRepository extends JpaRepository<ScheduleDetail,
             " join schedule  on schedule_detail.schedule_id = schedule.schedule_id" +
             " where  schedule.classroom_id = ?1" , nativeQuery = true)
     List<ScheduleDetail> findScheduleDetailByClassId(Integer classId);
+
+
 }
