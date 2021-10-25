@@ -20,7 +20,7 @@ public class Degree {
     private Integer degreeId;
     private String degreeName;
 
-    @JsonBackReference(value = "teacher-degree")
+    @JsonBackReference(value = "teacher_degree")
     @OneToMany(mappedBy = "degree")
     private Set<Teacher> teachers;
 }
