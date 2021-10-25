@@ -17,6 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +49,10 @@ public class AccountController {
 
     //    Kiet login API use to authentication by HttpBasic 23/10
     @PostMapping("/login")
-    public ResponseEntity<?> loginAccount(@Valid @RequestBody AccountDto accountDto) {
+    public ResponseEntity<?> loginAccount(@Valid @RequestBody AccountDto accountDto, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(accountDto.getUsername(), accountDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails user = userDetailsService.loadUserByUsername(accountDto.getUsername());
