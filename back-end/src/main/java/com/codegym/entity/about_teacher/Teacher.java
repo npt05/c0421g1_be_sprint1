@@ -43,8 +43,7 @@ public class Teacher {
     private Account account;
 
     @JsonBackReference
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
+    @OneToOne(mappedBy = "teacher")
     private Classroom classroom;
 
     private boolean deleteFlag;

@@ -13,9 +13,4 @@ public class TeacherServiceImpl implements ITeacherService {
     @Autowired
     private ITeacherRepository teacherRepository;
 
-    //Danh coding 2:00PM - 23-10-2021
-    @Override
-    public Teacher updateClassForTeacher(Integer classId, Integer teacherId) {
-        return this.teacherRepository.updateClassForTeacher(classId, teacherId);
-    }
 }

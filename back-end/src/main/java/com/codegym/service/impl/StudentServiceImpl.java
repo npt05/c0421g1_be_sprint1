@@ -15,7 +15,7 @@ public class StudentServiceImpl implements IStudentService {
 
     //Danh coding 2:00PM - 23-10-2021
     @Override
-    public Student updateClassForStudent(Integer classId, Integer studentId) {
-        return this.studentRepository.updateClassForStudent(classId, studentId);
+    public void updateClassForStudent(Integer classId, Integer studentId) {
+        this.studentRepository.updateClassForStudent(classId, studentId);
     }
 }

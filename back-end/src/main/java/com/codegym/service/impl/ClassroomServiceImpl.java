@@ -4,6 +4,8 @@ import com.codegym.entity.about_classroom.Classroom;
 import com.codegym.repository.IClassroomRepository;
 import com.codegym.service.IClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +30,14 @@ public class ClassroomServiceImpl implements IClassroomService {
 
     //DanhNT coding 2:00PM - 23-10-2021
     @Override
-    public void updateSchoolYear(String schoolYear, Integer id) {
-        this.classroomRepository.updateSchoolYear(schoolYear, id);
+    public void updateSchoolYear(String schoolYear, Integer teacherId, Integer classId) {
+        this.classroomRepository.updateSchoolYear(schoolYear, teacherId, classId);
+    }
+
+    //DanhNT coding 2:00PM - 23-10-2021
+    @Override
+    public Page<Classroom> findAllPage(Pageable pageable) {
+        return this.classroomRepository.findAllPage(pageable);
     }
 
 
