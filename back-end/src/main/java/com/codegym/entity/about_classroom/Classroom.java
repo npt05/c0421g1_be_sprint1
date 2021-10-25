@@ -4,6 +4,7 @@ import com.codegym.entity.about_schedule.Schedule;
 import com.codegym.entity.about_student.Student;
 import com.codegym.entity.about_teacher.Teacher;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,19 +25,19 @@ public class Classroom {
     private String classroomName;
     private String classroomSchoolYear;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne(targetEntity = Grade.class)
     @JoinColumn(name = "grade_id", referencedColumnName = "gradeId")
     private Grade grade;
 
     private boolean deleteFlag;
-
+    @JsonBackReference
     @OneToOne(mappedBy = "classroom")
     private Teacher teacher;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
-
+    @JsonBackReference
     @OneToOne(mappedBy = "classroom")
     private Schedule schedule;
 }
