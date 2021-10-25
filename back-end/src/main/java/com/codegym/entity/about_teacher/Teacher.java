@@ -2,6 +2,7 @@ package com.codegym.entity.about_teacher;
 
 import com.codegym.entity.about_account.Account;
 import com.codegym.entity.about_classroom.Classroom;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,15 +37,14 @@ public class Teacher {
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
+    @JsonBackReference
+    @OneToOne(mappedBy = "teacher")
     private Classroom classroom;
 
     private boolean deleteFlag;
+//    File ddax sua o main
 }

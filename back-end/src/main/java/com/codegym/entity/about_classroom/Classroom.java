@@ -31,10 +31,11 @@ public class Classroom {
     private boolean deleteFlag;
 
 
-    @OneToOne(mappedBy = "classroom")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id",referencedColumnName = "teacherId")
     private Teacher teacher;
 
-    @JsonBackReference(value = "student_classroom")
+
     @OneToMany(mappedBy = "classroom")
     private Set<Student> students;
 

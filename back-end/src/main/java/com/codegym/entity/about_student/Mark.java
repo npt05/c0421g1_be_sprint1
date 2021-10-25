@@ -29,5 +29,4 @@ public class Mark {
     private Double markPointNumber1;
     private Double markPointNumber2;
     private Double markPointNumber3;
-
 }

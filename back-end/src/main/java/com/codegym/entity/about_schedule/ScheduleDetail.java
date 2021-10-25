@@ -1,5 +1,6 @@
 package com.codegym.entity.about_schedule;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,19 @@ public class ScheduleDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer scheduleDetailId;
 
+    @JsonBackReference
     @ManyToOne(targetEntity = Subject.class)
     @JoinColumn(name = "subject_id", referencedColumnName = "subjectId")
     private Subject subject;
 
+    @JsonBackReference
     @ManyToOne(targetEntity = StudyDayTime.class)
     @JoinColumn(name = "study_day_time_id", referencedColumnName = "studyDayTimeId")
     private StudyDayTime studyDayTime;
 
+    @JsonBackReference
     @ManyToOne(targetEntity = Schedule.class)
     @JoinColumn(name = "schedule_id", referencedColumnName = "scheduleId")
     private Schedule schedule;
+
 }

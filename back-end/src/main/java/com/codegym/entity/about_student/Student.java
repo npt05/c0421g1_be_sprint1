@@ -22,8 +22,6 @@ public class Student {
     private Byte studentGender;
     private String studentFatherName;
     private String studentMotherName;
-    //LamNT edit Date to String
-    //LamNT delete all @JsonManagedReference
     private String studentDateOfBirth;
     private String studentEthnicity;
     private String studentAddress;
