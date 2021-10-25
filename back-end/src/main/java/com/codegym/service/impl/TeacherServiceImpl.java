@@ -37,4 +37,9 @@ public class TeacherServiceImpl implements ITeacherService {
     public List<Teacher> search(String search) {
         return null;
     }
+
+    @Override
+    public List<Teacher> getTeachersWithoutClassroom() {
+        return teacherRepository.getTeachersWithoutClassroom();
+    }
 }
