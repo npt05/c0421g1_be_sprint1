@@ -11,8 +11,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Grade {
@@ -24,4 +24,28 @@ public class Grade {
     @JsonBackReference(value = "classroom_grade")
     @OneToMany(mappedBy = "grade")
     private Set<Classroom> classrooms;
+
+    public Integer getGradeId() {
+        return gradeId;
+    }
+
+    public void setGradeId(Integer gradeId) {
+        this.gradeId = gradeId;
+    }
+
+    public String getGradeName() {
+        return gradeName;
+    }
+
+    public void setGradeName(String gradeName) {
+        this.gradeName = gradeName;
+    }
+
+    public Set<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(Set<Classroom> classrooms) {
+        this.classrooms = classrooms;
+    }
 }

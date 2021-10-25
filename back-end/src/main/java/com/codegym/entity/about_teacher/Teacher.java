@@ -2,7 +2,9 @@ package com.codegym.entity.about_teacher;
 
 import com.codegym.entity.about_account.Account;
 import com.codegym.entity.about_classroom.Classroom;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +17,8 @@ import java.sql.Date;
 @Entity
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +32,10 @@ public class Teacher {
     private String teacherPhone;
     private String teacherImage;
 
-    @JsonManagedReference(value = "teacher_degree")
     @ManyToOne(targetEntity = Degree.class)
     @JoinColumn(name = "degree_id", referencedColumnName = "degreeId")
     private Degree degree;
 
-    @JsonManagedReference(value = "teacher_division")
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id", referencedColumnName = "divisionId")
     private Division division;
@@ -45,32 +45,12 @@ public class Teacher {
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
 
-
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "classroom_id", referencedColumnName = "classroomId")
     private Classroom classroom;
+
     private boolean deleteFlag;
-    public Teacher(){
-
-    }
-    public Teacher(Integer teacherId, String teacherName, Byte teacherGender, Date teacherDateOfBirth, String teacherUniversity, String teacherAddress, String teacherEmail, String teacherPhone, String teacherImage, Degree degree, Division division, Account account, Classroom classroom, boolean deleteFlag) {
-        this.teacherId = teacherId;
-        this.teacherName = teacherName;
-        this.teacherGender = teacherGender;
-        this.teacherDateOfBirth = teacherDateOfBirth;
-        this.teacherUniversity = teacherUniversity;
-        this.teacherAddress = teacherAddress;
-        this.teacherEmail = teacherEmail;
-        this.teacherPhone = teacherPhone;
-        this.teacherImage = teacherImage;
-        this.degree = degree;
-        this.division = division;
-        this.account = account;
-        this.classroom = classroom;
-        this.deleteFlag = deleteFlag;
-    }
-
-
 
     public Integer getTeacherId() {
         return teacherId;
@@ -160,14 +140,6 @@ public class Teacher {
         this.division = division;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public Classroom getClassroom() {
         return classroom;
     }
@@ -182,5 +154,13 @@ public class Teacher {
 
     public void setDeleteFlag(boolean deleteFlag) {
         this.deleteFlag = deleteFlag;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

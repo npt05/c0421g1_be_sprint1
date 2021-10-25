@@ -32,11 +32,11 @@ public class StudentController {
         }
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Integer> addStudent() {
-        Classroom classroom = new Classroom();
-        Student student = new Student(1, (byte) 1,"a","a", null,"a","a","a","a","a","a","a",false, classroom, null);
-        Student newStudent = this.studentService.save(student);
-        return new ResponseEntity<>(newStudent.getStudentId(), HttpStatus.CREATED);
-    }
+//    @PostMapping("/add")
+//    public ResponseEntity<Integer> addStudent() {
+//        Classroom classroom = new Classroom();
+//        Student student = new Student(1, (byte) 1,"a","a", null,"a","a","a","a","a","a","a",false, classroom, null);
+//        Student newStudent = this.studentService.save(student);
+//        return new ResponseEntity<>(newStudent.getStudentId(), HttpStatus.CREATED);
+//    }
 }

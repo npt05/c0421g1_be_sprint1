@@ -10,10 +10,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+//@Getter
+//@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Degree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +23,6 @@ public class Degree {
     @JsonBackReference(value = "teacher-degree")
     @OneToMany(mappedBy = "degree")
     private Set<Teacher> teachers;
-
-    public Degree(){
-
-    }
-
-    public Degree(Integer degreeId, String degreeName, Set<Teacher> teachers) {
-        this.degreeId = degreeId;
-        this.degreeName = degreeName;
-        this.teachers = teachers;
-    }
 
     public Integer getDegreeId() {
         return degreeId;

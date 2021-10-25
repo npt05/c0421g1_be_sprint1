@@ -4,6 +4,7 @@ import com.codegym.entity.about_schedule.Schedule;
 import com.codegym.entity.about_student.Student;
 import com.codegym.entity.about_teacher.Teacher;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,8 +15,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Classroom {
@@ -25,13 +24,11 @@ public class Classroom {
     private String classroomName;
     private String classroomSchoolYear;
 
-    @JsonManagedReference(value = "classroom_grade")
     @ManyToOne(targetEntity = Grade.class)
     @JoinColumn(name = "grade_id", referencedColumnName = "gradeId")
     private Grade grade;
 
     private boolean deleteFlag;
-
 
     @OneToOne(mappedBy = "classroom")
     private Teacher teacher;
@@ -106,4 +103,6 @@ public class Classroom {
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
+
+
 }
