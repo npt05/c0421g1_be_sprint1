@@ -39,7 +39,7 @@ public class StudentRestController_getSearchStudent {
 //    Tham số tồn tại trong DB và có size=0
     @Test
     public void  getSearchStudent_10() {
-        ResponseEntity<Page<Student>> pageResponseEntity = this.studentController.searchByName(PageRequest.of(0,0),"Cường","Đang học");
+        ResponseEntity<Page<Student>> pageResponseEntity = this.studentController.searchByName(PageRequest.of(0,1),"Cường","Đã thôi học");
         Assertions.assertEquals(HttpStatus.NO_CONTENT, pageResponseEntity.getStatusCode());
     }
 
