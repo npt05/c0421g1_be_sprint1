@@ -21,6 +21,7 @@ public class Account {
     private Integer accountId;
     private String accountUsername;
     private String accountPassword;
+    private String accountEmail;
     private boolean activated_flag;
     private boolean lock_flag;
     private boolean delete_flag;
